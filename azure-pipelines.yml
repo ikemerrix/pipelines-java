@@ -30,3 +30,10 @@ steps:
       publishJUnitResults: true
       testResultsFiles: "**/TEST-*.xml"
       goals: "package"
+  - task: AzureFunctionApp@1
+    inputs:
+      azureSubscription: 'ismorris-subscription(f2aeaccd-73bf-45ef-8603-946e33fa5570)'
+      appType: 'functionApp'
+      appName: morrisonappsd
+      package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+      deploymentMethod: 'auto'
